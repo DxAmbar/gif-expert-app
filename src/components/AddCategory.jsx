@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const AddCategory = ({ setCategories }) => {
+export const AddCategory = ({ onNewCategory }) => {
 
     const [InputValue, setInputValue] = useState('');
 
@@ -16,7 +16,8 @@ export const AddCategory = ({ setCategories }) => {
         event.preventDefault();
         if( InputValue.trim().length <= 1) return; 
 
-        setCategories( (categories) => [ InputValue, ...categories] )
+        //setCategories( (categories) => [ InputValue, ...categories] )
+        onNewCategory( InputValue.trim() );
         setInputValue('');
         
     }
@@ -28,7 +29,7 @@ export const AddCategory = ({ setCategories }) => {
                 type="text" 
                 placeholder="Buscar gifs"   
                 value = { InputValue }
-                //onChange = { (event) => onInputChange(event) }
+                //onChange = { (event) => onInputChange(event) } es lo mismo que abajo, pero más limpio
                 onChange = { onInputChange}
             />
         </form>
